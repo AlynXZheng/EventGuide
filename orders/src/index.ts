@@ -7,7 +7,6 @@ import { TicketUpdatedListener } from "./events/listeners/ticket-updated-listene
 import { natsWrapper } from "./nats-wrapper";
 
 const start = async () => {
-  console.log("Starting up...");
   if (!process.env.JWT_SECRET) {
     throw new Error("JWT_KEY must be defined");
   }
