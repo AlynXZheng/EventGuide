@@ -52,43 +52,37 @@ const LandingPage = ({ currentUser, tickets }) => {
 //   );
 // };
 
+//PRODUCTION
 export const getServerSideProps = async ({ req }) => {
   //const { data } = await buildClient(context).get("/api/users/currentuser");
 
   const currentUser = await axios.get(
-    "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
+    "http://www.eventguide.shop/api/users/currentuser",
     { headers: req.headers }
   );
 
-  const tickets = await axios.get(
-    "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/tickets",
-    { headers: req.headers }
-  );
+  const tickets = await axios.get("http://www.eventguide.shop/api/tickets", {
+    headers: req.headers,
+  });
 
   return { props: { currentUser: currentUser.data, tickets: tickets.data } };
 };
 
 export default LandingPage;
 
-// const LandingPage = ({ currentUser}) => {
-//   return (
-//     <BaseLayout currentUser={currentUser}>
-//       {currentUser ? (
-//         <h1>You are signed in</h1>
-//       ) : (
-//         <h1>You are not signed in</h1>
-//       )}
-//     </BaseLayout>
-//   );
-// };
-
+//DEVELOPMENT
 // export const getServerSideProps = async ({ req }) => {
 //   //const { data } = await buildClient(context).get("/api/users/currentuser");
 
-//   const { data } = await axios.get(
+//   const currentUser = await axios.get(
 //     "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
 //     { headers: req.headers }
 //   );
 
-//   return { props: data };
+//   const tickets = await axios.get(
+//     "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/tickets",
+//     { headers: req.headers }
+//   );
+
+//   return { props: { currentUser: currentUser.data, tickets: tickets.data } };
 // };

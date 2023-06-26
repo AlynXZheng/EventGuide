@@ -55,11 +55,20 @@ const Signin = ({ currentUser }) => {
 
 export const getServerSideProps = async (context) => {
   const currentUser = await axios.get(
-    "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
+    "http://www.eventguide.shop/api/users/currentuser",
     { headers: context.req.headers }
   );
 
   return { props: { currentUser: currentUser.data } };
 };
+
+// export const getServerSideProps = async (context) => {
+//   const currentUser = await axios.get(
+//     "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
+//     { headers: context.req.headers }
+//   );
+
+//   return { props: { currentUser: currentUser.data } };
+// };
 
 export default Signin;
