@@ -67,16 +67,32 @@ export const getServerSideProps = async (context) => {
   const { ticketId } = context.query;
 
   const currentUser = await axios.get(
-    "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
+    "http://www.eventguide.shop/api/users/currentuser",
     { headers: context.req.headers }
   );
 
   const { data } = await axios.get(
-    `http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/tickets/${ticketId}`,
+    `http://www.eventguide.shop/api/tickets/${ticketId}`,
     { headers: context.req.headers }
   );
 
   return { props: { ticket: data, currentUser: currentUser.data } };
 };
+
+// export const getServerSideProps = async (context) => {
+//   const { ticketId } = context.query;
+
+//   const currentUser = await axios.get(
+//     "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
+//     { headers: context.req.headers }
+//   );
+
+//   const { data } = await axios.get(
+//     `http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/tickets/${ticketId}`,
+//     { headers: context.req.headers }
+//   );
+
+//   return { props: { ticket: data, currentUser: currentUser.data } };
+// };
 
 export default TicketShow;

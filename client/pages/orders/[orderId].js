@@ -62,16 +62,32 @@ export const getServerSideProps = async (context) => {
   const { orderId } = context.query;
 
   const { data } = await axios.get(
-    `http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/orders/${orderId}`,
+    `http://www.eventguide.shop/api/orders/${orderId}`,
     { headers: context.req.headers }
   );
 
   const currentUser = await axios.get(
-    "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
+    "http://www.eventguide.shop/api/users/currentuser",
     { headers: context.req.headers }
   );
 
   return { props: { order: data, currentUser: currentUser.data } };
 };
+
+// export const getServerSideProps = async (context) => {
+//   const { orderId } = context.query;
+
+//   const { data } = await axios.get(
+//     `http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/orders/${orderId}`,
+//     { headers: context.req.headers }
+//   );
+
+//   const currentUser = await axios.get(
+//     "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
+//     { headers: context.req.headers }
+//   );
+
+//   return { props: { order: data, currentUser: currentUser.data } };
+// };
 
 export default OrderShow;
