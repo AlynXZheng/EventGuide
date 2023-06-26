@@ -5,6 +5,8 @@ import { OrderCreatedListener } from "./events/listeners/order-created-listener"
 import { natsWrapper } from "./nats-wrapper";
 
 const start = async () => {
+  console.log("Starting up.....");
+
   if (!process.env.JWT_SECRET) {
     throw new Error("JWT_SECRET is undefined");
   }

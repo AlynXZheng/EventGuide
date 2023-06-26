@@ -35,7 +35,7 @@ const Navbar = ({ currentUser }) => {
   return (
     <nav className="flex h-20 items-center px-10 justify-between shadow-md">
       <Link href={"/"}>
-        <h1 className="text-4xl font-bold logo">EventGuide</h1>
+        <h2 className="text-4xl font-bold logo">EventGuide</h2>
       </Link>
 
       <div className="d-flex justify-content-end">
