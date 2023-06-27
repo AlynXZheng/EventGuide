@@ -78,3 +78,11 @@ spec:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/component: controller
+  tolerations:
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoSchedule
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
