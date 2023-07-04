@@ -78,6 +78,7 @@ export const getServerSideProps = async (context) => {
   return { props: { order: data, currentUser: currentUser.data } };
 };
 
+//DEVELOPMENT
 // export const getServerSideProps = async (context) => {
 //   const { orderId } = context.query;
 
