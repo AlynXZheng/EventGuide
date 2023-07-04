@@ -49,7 +49,6 @@ const userSchema = new Schema<User, UserModel, UserMethods>(
 
 //pre hook that encrypts the password
 userSchema.pre("save", async function (done) {
-  console.log("Inside Pre-save hook for pasword hashing");
   if (this.isModified("password")) {
     const hashed = await Password.hashPassword(this.get("password"));
     this.set("password", hashed);
