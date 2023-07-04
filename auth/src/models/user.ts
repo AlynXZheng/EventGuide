@@ -59,7 +59,7 @@ userSchema.pre("save", async function (done) {
 // userSchema.pre("save", async function (next) {
 //   if (!this.isModified("password")) return next();
 
-//   //hash the password with cost of 12
+//   //hash password with cost of 12
 //   this.password = await bcrypt.hash(this.password, 12);
 //   next();
 // });
