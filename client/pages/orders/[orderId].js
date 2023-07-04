@@ -44,15 +44,19 @@ const OrderShow = ({ order, currentUser }) => {
 
   return (
     <BaseLayout currentUser={currentUser}>
-      <div>
-        Time left to pay: {timeLeft} seconds
-        <StripeCheckout
-          token={({ id }) => doRequest({ token: id })}
-          stripeKey="pk_test_51NF367IAXNGkHbcjPb2qKupbWR50Rh1OuC2YNU35LnYbU0IraHLAUFlq4HJ0heiuJ5hweHgoteLywo7FeMlmjZZ500HNui4aCF"
-          amount={order.ticket.price * 100}
-          email={currentUser.email}
-        />
-        {errors}
+      <div className="flex items-center justify-center h-screen">
+        <div className="mb-4 absolute top-1/2 transform -translate-y-1/2">
+          <p>Time left to pay: {timeLeft} second</p>
+          <p>Use Stripe test card number: 4242 4242 4242 4242</p>
+          <p>Use any future date for expiry date and any 3 digits for CVC</p>
+          <StripeCheckout
+            token={({ id }) => doRequest({ token: id })}
+            stripeKey="pk_test_51NF367IAXNGkHbcjPb2qKupbWR50Rh1OuC2YNU35LnYbU0IraHLAUFlq4HJ0heiuJ5hweHgoteLywo7FeMlmjZZ500HNui4aCF"
+            amount={order.ticket.price * 100}
+            email={currentUser.email}
+          />
+          {errors}
+        </div>
       </div>
     </BaseLayout>
   );
